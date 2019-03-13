@@ -816,8 +816,19 @@
 			// Cache sorted $_GET;
 			$this->_get = array_merge(array(), $_GET);
 			ksort($this->_get);
+			
 			// hash it to make sure it wont overflow
-			$this->_url = $this->computeHash($this->_get);
+			// $this->_url = $this->computeHash($this->_get);
+			
+			// EXPERIMENTAL CHANGE:
+			//
+			// Identify a request by its actual $_SERVER['REQUEST_URI'] instead of 
+			// Symphonys own page parameters to make sure possible htaccess rewrite-
+			// rules (e.g. by multilingual extensions) are processed as expected.
+			//
+			// Could there be any reason to strip off query parameters?
+			
+			$this->_url = $this->computeHash($_SERVER['REQUEST_URI']);
 		}
 
 		private function isGetRequest()
