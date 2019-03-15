@@ -16,8 +16,8 @@
 		</author>
 	</authors>
 	<releases>
-		<release version="2.2.0-beta" date="2019-03-13" min="2.6.x" max="2.x.x">
-			- Htaccess rewrite compatibility
+		<release version="2.2.0-beta" date="2019-03-15" min="2.6.x" max="2.x.x">
+			- Use full URI as unique page identifier (Adds compatibility with htaccess-rewrite-rules, subdomains, multiple domaines, etc.)
 		</release>
 		<release version="2.1.2" date="2018-08-29" min="2.6.x" max="2.x.x">
 			- Fix crash on deleting entries

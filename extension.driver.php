@@ -822,13 +822,14 @@
 			
 			// EXPERIMENTAL CHANGE:
 			//
-			// Identify a request by its actual $_SERVER['REQUEST_URI'] instead of 
-			// Symphonys own page parameters to make sure possible htaccess rewrite-
-			// rules (e.g. by multilingual extensions) are processed as expected.
+			// Identify a request by its actual and full URI instead of  Symphonys
+			// own page parameters to make sure possible htaccess rewrite-rules
+			// (e.g. by multilingual extensions) are processed as expected.
 			//
 			// Could there be any reason to strip off query parameters?
 			
-			$this->_url = $this->computeHash($_SERVER['REQUEST_URI']);
+			$this->_url = $this->computeHash($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+			
 		}
 
 		private function isGetRequest()
